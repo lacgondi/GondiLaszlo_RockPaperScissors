@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         scissors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                player.setImageResource(R.drawable.rock);
+                player.setImageResource(R.drawable.scissors);
                 int aiChoice = aiPick();
                 switch(aiChoice){
                     case 1:
