@@ -71,6 +71,28 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        scissors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                player.setImageResource(R.drawable.rock);
+                int aiChoice = aiPick();
+                switch(aiChoice){
+                    case 1:
+                        Toast.makeText(MainActivity.this, "Vereség", Toast.LENGTH_SHORT).show();
+                        aiWinCount++;
+                        aiResult.setText("Gép: "+aiWinCount);
+                        break;
+                    case 2:
+                        Toast.makeText(MainActivity.this, "Győzelem", Toast.LENGTH_SHORT).show();
+                        playerWinCount++;
+                        playerResult.setText("Ember: "+playerWinCount);
+                        break;
+                    case 3:
+                        Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
 
     }
 
