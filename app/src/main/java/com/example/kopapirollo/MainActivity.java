@@ -1,7 +1,9 @@
 package com.example.kopapirollo;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         playerResult.setText("Ember: "+playerWinCount);
                         break;
                 }
+                checkWin();
             }
         });
         paper.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         aiResult.setText("Gép: "+aiWinCount);
                         break;
                 }
+                checkWin();
             }
         });
         scissors.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
                         break;
                 }
+                checkWin();
             }
         });
 
@@ -109,6 +114,31 @@ public class MainActivity extends AppCompatActivity {
                 return 3;
         }
         return 0;
+    }
+
+    private void checkWin(){
+        if(aiWinCount==3 || playerWinCount==3){
+            AlertDialog.Builder build = new AlertDialog.Builder(MainActivity.this);
+            if(aiWinCount==3){
+                build.setTitle("Vesztettél");
+            }else if(playerWinCount==3){
+                build.setTitle("Győztél");
+            }
+            build.setCancelable(false);
+            build.setMessage("Szertnél új játékot játszani?");
+            build.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            build.setPositiveButton("Igen", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    init();
+                }
+            });
+        }
     }
 
     private void init(){
