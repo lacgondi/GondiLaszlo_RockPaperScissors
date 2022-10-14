@@ -103,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int aiPick(){
-        switch ((int) (Math.random()*3)+1){
+        int rand = (int) (Math.random()*3)+1;
+        switch (rand){
             case 1:
                 ai.setImageResource(R.drawable.rock);
                 return 1;
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     init();
                 }
             });
+            build.create().show();
         }
     }
 
